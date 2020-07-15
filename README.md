@@ -1,4 +1,4 @@
 
-"Costumer Relational Management (CRM) using python django"
+"Customer Relational Management (CRM) using python django"
 
 have fun and keep coding  ^_^
