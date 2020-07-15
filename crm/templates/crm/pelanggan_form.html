@@ -1,0 +1,29 @@
+{% extends "crm/main.html"%}
+{% load static%}
+
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <hr>
+                {{form.nama|as_crispy_field}}
+                {{form.no_hp|as_crispy_field}}
+                {{form.email|as_crispy_field}}
+                
+                <input type="submit" name="Submit" class="btn btn-primary">
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}

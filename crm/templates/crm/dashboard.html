@@ -1,0 +1,61 @@
+{% extends 'crm/main.html'%}
+
+{% block content %}
+
+{% include 'crm/status.html'%}
+<br>
+<div class="row">
+    <div class="col-md-5">
+        <h5 style="text-align: center;">Pelanggan :</h5>
+        <hr>
+        <div class="card card-body">
+		    <a class="btn btn-primary  btn-sm btn-block" href="{% url 'tambah_pelanggan'%}">Tambah Pelanggan</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>view</th>
+                    <th>Pelanggan</th>
+                    <th>No Hp</th>
+                </tr>
+                {% for pelanggan in pelanggans %}
+                    <tr>
+                        <td><a class="btn btn-sm btn-primary fa fa-eye" href="{% url 'pelanggan' pelanggan.id %}"></a></td>
+                        <td>{{pelanggan.nama}}</td>
+                        <td>{{pelanggan.no_hp}}</td>
+
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <h5 style="text-align: center;">Pesanan :</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'buatpesanan'%}">Tambah Pesanan</a>
+            <table class="table table-sm table-bordered">
+                <tr>
+                    <th>Produk</th>
+                    <th>tgl pesan</th>
+                    <th>status</th>
+                    <th>update</th>
+                    <th>hapus</th>
+                </tr>
+                {% for pesanan in pesanan %}
+                <tr>
+                    <td>{{pesanan.produk}}</td>
+                    <td>{{pesanan.date_created}}</td>
+                    <td>{{pesanan.status}}</td>
+					<td><a class="btn btn-sm btn-info fa fa-pencil-square-o" href="{% url 'update_pesanan' pesanan.id %}"></a></td>
+					<td><a class="btn btn-sm btn-danger fa fa-trash" href="{% url 'delete_pesanan' pesanan.id %}" onclick="return confirm('hapus data ?')"></a></td>
+                        
+                </tr>
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock content %}

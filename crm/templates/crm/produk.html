@@ -1,0 +1,44 @@
+{% extends 'crm/main.html' %}
+{% block content %}
+    <br>
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Produk</h5>
+            <a href="{% url 'tambah_produk'%}" class="btn btn-sm btn-primary btn-block" style="text-align: center;">tambah produk</a>
+            </div>
+           
+            <div class="card card-body">
+                <table id ="table" class="table table-bordered table-hover">
+                    <thead class="alert-success thead-dark">
+                        <tr>
+                            <th>No</th>
+                            <th>Produk</th>
+                            <th>Kategori</th>
+                            <th>Harga</th>
+                            <th>Deskripsi</th>
+                            <th>proses</th>
+
+                        </tr> 
+                    </thead>
+                    <tbody>
+                    {% for i in produk %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{i.nama}}</td>
+                            <td>{{i.kategori}}</td>
+                            <td>Rp {{i.harga}}</td>
+                            <td>{{i.deskripsi}}</td>
+					        <td>
+                            <a class="btn btn-sm btn-info" href="{% url 'update_produk' i.id %}"> Perbarui </a>
+					        <a class="btn btn-sm btn-danger" href="{% url 'hapus_produk' i.id %}" onclick="return confirm ('hapus produk ?')"> Hapus </a>
+                           </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
